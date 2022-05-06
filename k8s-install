@@ -19,7 +19,7 @@
 7. Create an S3 bucket with unique name (k8s.morning.demo.net)
 8. Create a Route53 private hosted zone (demo.net) (you can create Public hosted zone if you have a domain)
 
-9. Expose environment variable:    export KOPS_STATE_STORE=s3://k8s.morning.demo.net 
+9. Expose environment variable:    export KOPS_STATE_STORE=s3://kubernetes.demo.net 
 
 10. Create sshkeys before creating cluster for private and public key : ssh-keygen
 
