@@ -19,29 +19,29 @@
 7. Create an S3 bucket with unique name (k8s.morning.demo.net)
 8. Create a Route53 private hosted zone (demo.net) (you can create Public hosted zone if you have a domain)
 
-9. Expose environment variable:    export KOPS_STATE_STORE=s3://kubernetes.demo.net 
+9. Expose environment variable:    export KOPS_STATE_STORE=s3://k8s.morning.demo.net 
 
 10. Create sshkeys before creating cluster for private and public key : ssh-keygen
 
 11. Create kubernetes cluster definitions on S3 bucket
-   kops create cluster --cloud=aws --zones=us-east-1a --name=kubernetes.demo.net --dns-zone=demo.net --dns private
+   kops create cluster --cloud=aws --zones=us-east-1a --name=k8s.morning.demo.net --dns-zone=demo.net --dns private
 
-12. Edit your node instance group change instance type to t2.micro : kops edit ig --name=kubernetes.demo.net nodes
-13. Edit your master instance group change instance type to t2.micro : kops edit ig --name=kubernetes.demo.net master-us-east-1a
+12. Edit your node instance group change instance type to t2.micro : kops edit ig --name=k8s.morning.demo.net nodes
+13. Edit your master instance group change instance type to t2.micro : kops edit ig --name=k8s.morning.demo.net master-us-east-1a
 
 14. Create kubernetes cluser
-    kops update cluster --name kubernetes.demo.net --yes
+    kops update cluster --name k8s.morning.demo.net --yes
 
 15. Validate your cluster after 10 mins :  kops validate cluster
 
 16. list nodes: kubectl get nodes --show-labels
 
-17. ssh to the master: ssh -i ~/.ssh/id_rsa admin@api.kubernetes.demo.net 
+17. ssh to the master: ssh -i ~/.ssh/id_rsa admin@api.k8s.morning.demo.net 
 18. Upgrade as root : sudo su -
 
 19. To list nodes :   kubectl get all
 
-20. To delete cluster :  kops delete cluster kubernetes.demo.net --yes
+20. To delete cluster :  kops delete cluster k8s.morning.demo.net --yes
 
    
 #### Deploying Nginx pods on Kubernetes
